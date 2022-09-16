@@ -13,6 +13,10 @@ app.get("/games", (req, res) => {
   return res.json({ msg: "2" });
 });
 
+app.post("/games", (req, res) => {
+  return res.json({ msg: "2" });
+});
+
 app.listen(process.env.PORT, () => {
   console.log("Servidor ativo");
 });
