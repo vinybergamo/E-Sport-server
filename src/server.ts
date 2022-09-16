@@ -7,6 +7,10 @@ const app = express();
 
 app.get("/ads", (req, res) => {
   return res.json({ msg: "1" });
+}); 
+
+app.get("/games", (req, res) => {
+  return res.json({ msg: "2" });
 });
 
 app.listen(process.env.PORT, () => {
