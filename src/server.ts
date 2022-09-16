@@ -1,12 +1,24 @@
 import dotenv from "dotenv";
 import express from "express";
+import { PrismaClient } from "@prisma/client";
 
 dotenv.config();
 
 const app = express();
+const prisma = new PrismaClient();
 
-app.get("/games", (req, res) => {
-  return res.json([]);
+app.get("/games", async (req, res) => {
+  const games = await prisma.game.findMany({
+    include: {
+      _count: {
+        select: {
+          ads: true,
+        },
+      },
+    },
+  });
+
+  return res.json(games);
 });
 
 app.post("/ads", (req, res) => {
